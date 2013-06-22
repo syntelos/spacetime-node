@@ -1,0 +1,52 @@
+/*
+ * Spacetime Node
+ * Copyright (C) 2013, John Pritchard.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+package spacetime.node;
+
+import spacetime.SpacetimeObject;
+
+/**
+ * An object node in space time has membership in domain ordered sets
+ * of associated nodes.
+ */
+public interface SpacetimeNode<F extends Number>
+    extends SpacetimeObject<F>
+{
+    public lxl.List<Enum> membershipInSpacetimeDomains();
+
+    public <E extends Enum<E>> int indexInSpacetimeDomain(E domain);
+
+    public <E extends Enum<E>> SpacetimeDomain<E,SpacetimeNode<F>> getSpacetimeDomain(E domain);
+    /**
+     * @return Null for no value
+     */
+    public <E extends Enum<E>> F getSpacetimeScalar(E domain);
+    /**
+     * @return Null for no value
+     */
+    public <E extends Enum<E>> F getSpacetimeDeriv1(E domain);
+    /**
+     * @return Null for no value
+     */
+    public <E extends Enum<E>> F getSpacetimeDeriv2(E domain);
+    /**
+     * @return Null for no value
+     */
+    public <E extends Enum<E>> F getSpacetimeDeriv3(E domain);
+
+}
